@@ -13,8 +13,25 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
+  const [unit, setUnit] = useState("metric");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&appid=30eec3809a2191f222b0172e1b95a4c7&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&appid=30eec3809a2191f222b0172e1b95a4c7&units=${unit}`;
+  const handleClick = () => {
+    const newUnit = unit === 'metric' ? 'imperial' : 'metric';
+    setUnit(newUnit);
+    const updatedUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&appid=30eec3809a2191f222b0172e1b95a4c7&units=${newUnit}`;
+
+  axios
+    .get(updatedUrl)
+    .then((response) => {
+      setData(response.data);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(`An error occurred: ${error}`);
+      setLocation("");
+    });
+  }
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -24,7 +41,7 @@ function App() {
           setData(response.data);
           console.log(response.data);
 
-          setLocation("");
+          //setLocation("");
           //gets correct icon
           const mainWeather = response.data.weather[0].main;
 
@@ -63,6 +80,11 @@ function App() {
           placeholder="Enter Zipcode"
           type="text"
         />
+        <div>
+          <button onClick={handleClick} className="button">
+            {unit === "metric" ? "Change to Fahrenheit" : "Change to Celsius"}
+          </button>
+        </div>
       </div>
       <div className="container">
         <div className="top">
@@ -71,7 +93,7 @@ function App() {
           </div>
           <div className="container2">
             <div className="temp">
-              {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
+              {data.main ? <h1>{data.main.temp.toFixed()}{unit === "metric" ? "°C" : "°F"}</h1> : null}
             </div>
             <div>
               {weatherIcon ? (
@@ -83,9 +105,9 @@ function App() {
               ) : null}
             </div>
           </div>
-            <div className="description">
-              {data.weather ? <p>{data.weather[0].main}</p> : null}
-            </div>
+          <div className="description">
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
+          </div>
         </div>
 
         {data.name !== undefined && (
