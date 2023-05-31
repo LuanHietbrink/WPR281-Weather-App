@@ -31,7 +31,7 @@ h1 {
 
 .app:before {
   content:'';
-  background: url(./assets/5333036-long-exposure-mountain-clouds-fog-motion-ocean-rock-sea-hiking-sunset-cloud-table-mountain-cape-town-south-africa-capetown-blur-sky-cliff-landscape-colorful-creative-commons-images.jpg) no-repeat center center/cover;
+  background: url(./assets/Berg.jpg) no-repeat center center/cover;
   position: absolute;
   width:100%;
   height: 100%;
