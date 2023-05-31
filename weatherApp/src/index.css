@@ -96,3 +96,12 @@ h1 {
 .bold {
   font-weight: 700;
 }
+
+.app .weather-icon{
+
+  position: relative;
+ 
+}
+.container2 {
+  display:flex;
+}
