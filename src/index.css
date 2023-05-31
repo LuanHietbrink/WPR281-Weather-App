@@ -103,3 +103,22 @@ h1 {
   background-color: rgba(0,0,0,0.4);
   color: white;
 }
+
+#change {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 30%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+#change:hover{
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  opacity: 0.5;
+}
