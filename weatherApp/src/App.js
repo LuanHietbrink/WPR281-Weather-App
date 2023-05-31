@@ -23,6 +23,7 @@ function App() {
         console.log(response.data)
       
       setLocation('')
+      //gets correct icon
       const mainWeather = response.data.weather[0].main;
 
         if (mainWeather === 'Clear') {
