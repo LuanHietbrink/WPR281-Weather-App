@@ -1,28 +1,18 @@
+function showMessage(message) {
+  // Create the pop-up message element
+  const popup = document.createElement('div');
+  popup.classList.add('popup-message');
+  popup.textContent = message;
 
+  // Append the pop-up message element to the body
+  document.body.appendChild(popup);
 
-function icon(weatherType) {
-  let iconSrc ="";
-
-  if (weatherType === "Clear") {
-    iconSrc = "./assets/images/clear.png";
-  } else if (weatherType === "Clouds") {
-    iconSrc = "./assets/images/clouds.png";
-  } else if (weatherType === "Drizzle") {
-    iconSrc = "./assets/images/drizzle.png";
-  } else if (weatherType === "Humidity") {
-    iconSrc = "./assets/images/humidity.png";
-  } else if (weatherType === "Mist") {
-    iconSrc = "./assets/images/mist.png";
-  } else if (weatherType === "Rain") {
-    iconSrc = '/assets/Rain.jpg';
-  } else if (weatherType === "Snow") {
-    iconSrc = "./assets/images/snow.png";
-  } else if (weatherType === "Wind") {
-    iconSrc = './assets/images/wind.png';
-  }
-  return iconSrc;
+  // Remove the pop-up message after a certain duration (e.g., 3 seconds)
+  setTimeout(() => {
+    popup.remove();
+  }, 3000);
 }
 
 module.exports = {
-    icon,
+    showMessage
   };
