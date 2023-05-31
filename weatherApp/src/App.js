@@ -114,7 +114,7 @@ function App() {
           <div className="bottom">
             <div className="feels">
               {data.main ? (
-                <p className="bold">{data.main.feels_like.toFixed()}°C</p>
+                <p className="bold">{data.main.feels_like.toFixed()} {unit === "metric" ? "°C" : "°F"}</p>
               ) : null}
               <p>Feels like</p>
             </div>
@@ -124,7 +124,7 @@ function App() {
             </div>
             <div className="wind">
               {data.wind ? (
-                <p className="bold">{data.wind.speed.toFixed()} KPH</p>
+                <p className="bold">{data.wind.speed.toFixed()} {unit === "metric" ? "KPH" : "MPH"}</p>
               ) : null}
               <p>Wind Speed</p>
             </div>
