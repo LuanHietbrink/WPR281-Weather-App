@@ -1,33 +1,26 @@
-const weatherIcon = document.querySelector(".weather-icon");
+import React from "react";
 
-if (data.weather[0].main == "Clear"){
-    weatherIcon.src = "/public/images/clear.png";
-}
+function Icon({ weatherType }) {
+  let iconSrc;
 
-else if (data.weather[0].main == "Clouds"){
-    weatherIcon.src = "/public/images/clouds.png";
-}
-    
-else if (data.weather[0].main == "drizzle"){
-    weatherIcon.src = "/public/images/drizzle.png";
-}
-
-else if (data.weather[0].main == "humidity"){
-     weatherIcon.src = "/public/images/humidity.png";
-}
-
-else if (data.weather[0].main == "mist"){
-     weatherIcon.src = "/public/images/mist.png";
-}
-       
-else if (data.weather[0].main == "rain"){
-     weatherIcon.src = "/public/images/rain.png";
-}
-   
-else if (data.weather[0].main == "snow"){
-    weatherIcon.src = "/public/images/snow.png";
-}
-else if (data.weather[0].main == "wind"){
-    weatherIcon.src = "/public/images/wind.png";
+  if (weatherType === "Clear") {
+    iconSrc = "/assets/images/clear.png";
+  } else if (weatherType === "Clouds") {
+    iconSrc = "/assets/images/clouds.png";
+  } else if (weatherType === "Drizzle") {
+    iconSrc = "/assets/images/drizzle.png";
+  } else if (weatherType === "Humidity") {
+    iconSrc = "/assets/images/humidity.png";
+  } else if (weatherType === "Mist") {
+    iconSrc = "/assets/images/mist.png";
+  } else if (weatherType === "Rain") {
+    iconSrc = "/assets/images/Rain.jpg";
+  } else if (weatherType === "Snow") {
+    iconSrc = "/assets/images/snow.png";
+  } else if (weatherType === "Wind") {
+    iconSrc = "/assets/images/wind.png";
+  }
+  return <img src={iconSrc} alt="Weather Icon" />;
 }
 
+export default Icon;
