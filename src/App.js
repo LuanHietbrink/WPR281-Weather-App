@@ -1,11 +1,25 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
+const button1 = document.getElementById('button1');
+const button2 = document.getElementById('button2');
+
+var units = 'metric';
+function changeUnits() {
+  if (units === "metric") {
+    units = "imperial";
+  } else if (units === "imperial") {
+    units = "metric";
+  }
+}
+
+
+
 function App() {
   const [data,setData] = useState({})
   const [location, setLocation] = useState('')
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&appid=30eec3809a2191f222b0172e1b95a4c7&units=metric`
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&appid=30eec3809a2191f222b0172e1b95a4c7&units=${units}`
 
   const searchLocation = (event) => {
     if (event.key === 'Enter'){
@@ -37,6 +51,10 @@ function App() {
           </div>
           <div className= "description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
+          </div>
+          <div className='buttons'>
+            <button className='b' id="button1" onClick="changeUnits()">Celcius</button>
+            <button className='b' id="button2" onClick="changeUnits()">Farenheit</button>
           </div>
         </div>
 
