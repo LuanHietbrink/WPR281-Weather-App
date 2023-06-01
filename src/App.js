@@ -115,12 +115,14 @@ function App() {
               </div>
             </div>
             <div>
-              <img src={weatherIcon} alt="weather icon" className="weather-icon" />
+              {data.weather ? <img src={weatherIcon} alt="weather icon" className="weather-icon" /> : null}
             </div>
             <div>
+              {data.weather ?
               <button id="change" onClick={toggleUnit}>
                 Change Units
               </button>
+              : null}
             </div>
             {data.name !== undefined && (
               <div className="bottom">
