@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+//Import weather Icons
 import clearIcon from './assets/clear.png';
 import cloudsIcon from './assets/clouds.png';
 import drizzleIcon from './assets/drizzle.png';
@@ -12,8 +13,8 @@ import humidityIcon from './assets/humidity.png';
 
 function App() {
   const [data, setData] = useState({});
-  const [location, setLocation] = useState('');
-  const [weatherIcon, setWeatherIcon] = useState('');
+  const [location, setLocation] = useState('');//set location as blank
+  const [weatherIcon, setWeatherIcon] = useState('');//set weather icon as blank
   const [unit, setUnit] = useState('metric'); // default unit is metric
   const [error, setError] = useState(false);
 
@@ -23,7 +24,7 @@ function App() {
 
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&units=${unit}&appid=30eec3809a2191f222b0172e1b95a4c7` // Replace with your OpenWeather API key
+          `https://api.openweathermap.org/data/2.5/weather?zip=${location},za&units=${unit}&appid=30eec3809a2191f222b0172e1b95a4c7`
         )
         .then((response) => {
           setData(response.data);
@@ -31,7 +32,7 @@ function App() {
           console.log(response.data);
 
           const mainWeather = response.data.weather[0].main;
-
+          //Displays Icon based on weather recieved form the API
           switch (mainWeather) {
             case 'Clear':
               setWeatherIcon(clearIcon);
@@ -66,12 +67,14 @@ function App() {
           setError(true);
           console.error('Error fetching weather data:', error);
         });
-
+      
+      //Clear the location after pressing enter
       setLocation('');
     }
   };
 
   const toggleUnit = () => {
+    //If statement to change units
     const newUnit = unit === 'metric' ? 'imperial' : 'metric';
     setUnit(newUnit);
   };
