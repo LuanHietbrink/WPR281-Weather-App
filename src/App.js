@@ -120,7 +120,7 @@ function App() {
             <div>
               {data.weather ?
               <button id="change" onClick={toggleUnit}>
-                Change Units
+                {unit === "metric" ? "Change to Fahrenheit" : "Change to Celsius"}
               </button>
               : null}
             </div>
